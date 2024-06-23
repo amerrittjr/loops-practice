@@ -3,9 +3,18 @@
 // In case there is no account that has balance > 0 return an empty array
 // Array example: bankAccounts in /data/data.js
 // getClientWithLeastBalance(bankAccounts) => [{ name: 'SomeName', balance: 32, ... }]
+import {bankAccounts} from './data/data.js'
+export function getClientWithLeastPositiveBalance(accounts) {
+  const bankAccountsNoPositiveBalance = accounts.filter(account => account.balance > 0);
+  if(bankAccountsNoPositiveBalance.length === 0){
+    return []
+  }
+  const accountWithLowestBalance = bankAccountsNoPositiveBalance.reduce((minAccount, currentAccount) => {
+    return(currentAccount.balance < minAccount.balance) ? currentAccount : minAccount;
 
-export function getClientWithLeastPositiveBalance(array) {
-  // Your code goes here...
+  });
+
+  return[accountWithLowestBalance];
   
 }
 

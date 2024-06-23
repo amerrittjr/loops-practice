@@ -5,9 +5,21 @@
 // NOTE: You can NOT use the array.reverse() method in your code
 
 export function reverseArray(array) {
-  // Your code goes here...
-
+  let left = 0;
+  let right = array.length - 1;
+    
+  while (left < right) {
+        let temp = array[left];
+        array[left] = array[right];
+        array[right] = temp;
+        left++;
+        right--;
+    }
+    return array;
 }
+
+
+
 
 
 

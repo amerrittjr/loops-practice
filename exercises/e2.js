@@ -1,11 +1,19 @@
 // EXERCISE 2
 // for every number between 0 and max find all numbers that have square roots that are integers
 // getNumbersWithSquareRoots(17) => [0, 1, 4, 9, 16]
-
-export function getNumbersWithSquareRoots(max) {
   // Your code goes here...
 
-}
+  export function getNumbersWithSquareRoots(max){
+    const numbersWithSquareRoots = [];
+
+  for(let i = 0; i <= max; i++){
+    const sqrt = Math.sqrt(i);
+      if(Number.isInteger(sqrt)){
+        numbersWithSquareRoots.push(i);
+      }
+    }
+    return numbersWithSquareRoots;
+  }
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-2"

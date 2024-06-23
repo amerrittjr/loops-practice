@@ -3,10 +3,16 @@
 // Array example: bankAccounts in /data/data.js
 // getClientWithNoMoney(bankAccounts) => ['Kevin', 'Jon']
 
-export function getClientWithNoMoney(array) {
-  // Your code goes here...
 
+import { bankAccounts } from './data/data.js';
+
+export function getClientWithNoMoney(accounts) {
+  const zeroBalanceAccounts = accounts.filter(account => account.balance === 0);
+  const clientNames = zeroBalanceAccounts.map(account => account.name);
+  return clientNames;
 }
+
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-6"

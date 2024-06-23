@@ -9,7 +9,10 @@
  * */
 
 export function getAverage(array) {
-  // Your code goes here...
+  if(array.length ===0) return 0;
+  const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const average = sum / array.length;
+  return average;
 
 }
 
@@ -20,11 +23,19 @@ export function getAverage(array) {
  * Example1: getStringSum("GH2U87A") => 17
  * Example2: getStringSum("GHIUJUHSG") => 0
  * */ 
-
 export function getStringSum(str) {
-  // Your code goes here...
-
+  let sum = 0; 
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (!isNaN(char) && char !== ' ') {
+      sum += parseInt(char, 10);
+    }
+  }
+  return sum;
 }
+
+
+
 
 
 // === TEST YOURSELF ===
