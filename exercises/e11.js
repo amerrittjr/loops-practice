@@ -8,17 +8,17 @@ export function getAllWithdrawals(bankAccounts) {
   
   let withdrawalSums = [];
 
-  for (let i = 0; i < bankAccounts.length; i++) {
-    
-    let account = bankAccounts[i];
-    
-    if (account.withdrawals && account.withdrawals.length > 0) {
-      let sum = account.withdrawals.reduce((total, amount) => total + amount, 0);
-      withdrawalSums.push(sum);
-    } else {
-      withdrawalSums.push(0);
+  for(let user of bankAccounts){
+    let userWithdrawals = 0;
+    if (user.withdrawals){
+      for(let amount of user.withdrawals){
+        userWithdrawals += +amount;
+      }
     }
+    withdrawalSums.push(userWithdrawals);
+
   }
+
   return withdrawalSums;
 }
 

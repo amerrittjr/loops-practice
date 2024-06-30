@@ -5,14 +5,11 @@
 
   export function getNumbersWithSquareRoots(max){
     const numbersWithSquareRoots = [];
+    for(let i = 0; i * i <= max; i++){
 
-  for(let i = 0; i <= max; i++){
-    const sqrt = Math.sqrt(i);
-      if(Number.isInteger(sqrt)){
-        numbersWithSquareRoots.push(i);
-      }
+      numbersWithSquareRoots.push(i * i);
     }
-    return numbersWithSquareRoots;
+      return numbersWithSquareRoots;
   }
 
 // === TEST YOURSELF ===

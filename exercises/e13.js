@@ -15,19 +15,22 @@ export function getAllAccountsWithSumsOfDepositsLess2000(bankAccounts) {
   for (let i = 0; i < bankAccounts.length; i++) {
     let account = bankAccounts[i];
     if (!account.deposits || account.deposits.length === 0) {
-      
       filteredAccounts.push(account);
     } else {
-      
-      let totalSum = account.deposits.reduce((total, deposit) => total + deposit, 0);
+      let totalSum = 0;
+      for (let j = 0; j < account.deposits.length; j++) {
+        totalSum += account.deposits[j];
+      }
 
       if (totalSum < 2000) {
         filteredAccounts.push(account);
       }
     }
   }
+
   return filteredAccounts;
 }
+
 
 
 // === TEST YOURSELF ===

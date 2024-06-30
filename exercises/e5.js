@@ -7,7 +7,10 @@
 
 import { bankAccounts } from './data/data.js';
 export function getAllClientNames(accounts) {
-  const clientNames = accounts.map(account => account.name);
+  const clientNames = [];
+  for(let i=0; i < accounts.length; i++){
+    clientNames.push(accounts[i].name);
+  } 
   return clientNames;
 }
 

@@ -11,17 +11,29 @@ export function getClientsWithWrongBalance(bankAccounts) {
   for (let i = 0; i < bankAccounts.length; i++) {
     let account = bankAccounts[i];
 
-    let sumOfDeposits = account.deposits ? account.deposits.reduce((total, deposit) => total + deposit, 0) : 0;
-    let sumOfWithdrawals = account.withdrawals ? account.withdrawals.reduce((total, withdrawal) => total + withdrawal, 0) : 0;
+    let sumOfDeposits = 0;
+    if (account.deposits) {
+      for (let j = 0; j < account.deposits.length; j++) {
+        sumOfDeposits += account.deposits[j];
+      }
+    }
+
+    let sumOfWithdrawals = 0;
+    if (account.withdrawals) {
+      for (let j = 0; j < account.withdrawals.length; j++) {
+        sumOfWithdrawals += account.withdrawals[j];
+      }
+    }
+
     let expectedBalance = sumOfDeposits - sumOfWithdrawals;
 
-    if(account.balance !== expectedBalance){
+    if (account.balance !== expectedBalance) {
       incorrectBalance.push(account);
     }
-      
   }
   return incorrectBalance;
 }
+
 
 
 

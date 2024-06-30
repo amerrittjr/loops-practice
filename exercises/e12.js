@@ -2,21 +2,25 @@
 // Array example: bankAccounts in /data/data.js
 // getAllDepositsGreaterThanOneHundred(bankAccounts) => [3432, 43242.34, 23432]
 
-export function getAllDepositsGreaterThanOneHundred(array) {
-
+export function getAllDepositsGreaterThanOneHundred(bankAccounts) {
   let depositsGreaterThanOneHundred = [];
 
-  for (let i = 0; i < array.length; i++) {
-    let account = array[i];
+  for (let i = 0; i < bankAccounts.length; i++) {
+    let account = bankAccounts[i];
 
     if (account.deposits && account.deposits.length > 0) {
-
-      let filteredDeposits = account.deposits.filter(deposit => deposit > 100);
-      depositsGreaterThanOneHundred = depositsGreaterThanOneHundred.concat(filteredDeposits);
+      for (let j = 0; j < account.deposits.length; j++) {
+        let deposit = account.deposits[j];
+        if (deposit > 100) {
+          depositsGreaterThanOneHundred.push(deposit);
+        }
+      }
     }
   }
+
   return depositsGreaterThanOneHundred;
 }
+
 
 
 

@@ -5,17 +5,24 @@
 // getClientWithLeastBalance(bankAccounts) => [{ name: 'SomeName', balance: 32, ... }]
 import {bankAccounts} from './data/data.js'
 export function getClientWithLeastPositiveBalance(accounts) {
-  const bankAccountsNoPositiveBalance = accounts.filter(account => account.balance > 0);
-  if(bankAccountsNoPositiveBalance.length === 0){
-    return []
+
+  let minAccount = null;
+
+  for(let i=0; i < accounts.length; i++){
+    if(accounts[i].balance > 0){
+      if(minAccount === null || accounts[i].balance < minAccount.balance){
+        minAccount = accounts[i];
+      }
+    }
+
   }
-  const accountWithLowestBalance = bankAccountsNoPositiveBalance.reduce((minAccount, currentAccount) => {
-    return(currentAccount.balance < minAccount.balance) ? currentAccount : minAccount;
+  if(minAccount === null){
+  return [];
+  }
 
-  });
+  return [minAccount];
 
-  return[accountWithLowestBalance];
-  
+
 }
 
 // === TEST YOURSELF ===

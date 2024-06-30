@@ -7,8 +7,12 @@
 import { bankAccounts } from './data/data.js';
 
 export function getClientWithNoMoney(accounts) {
-  const zeroBalanceAccounts = accounts.filter(account => account.balance === 0);
-  const clientNames = zeroBalanceAccounts.map(account => account.name);
+  const clientNames = [];
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].balance === 0) {
+      clientNames.push(accounts[i].name);
+    }
+  }
   return clientNames;
 }
 
